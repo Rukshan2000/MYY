@@ -50,7 +50,7 @@
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
-            animation: moveSideways 3s infinite ease-in-out; /* Adds motion */
+            animation: moveSideways 3s infinite ease-in-out;
         }
 
         h1 {
@@ -96,12 +96,33 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            animation: scalePlayButton 2s infinite ease-in-out; /* Adds continuous scaling animation */
+            animation: scalePlayButton 2s infinite ease-in-out;
         }
 
         .play-pause-btn:hover {
             background-color: #cc0000;
             transform: scale(1.1);
+        }
+
+        .volume-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 150px;
+            height: 5px;
+            background: #ccc;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .volume-slider:hover {
+            opacity: 1;
         }
 
         .footer {
@@ -148,6 +169,11 @@
     </header>
     <div class="audio-container">
         <button class="play-pause-btn" id="playPauseBtn">▶️</button>
+        <!-- Volume control slider -->
+        <div class="volume-container">
+            <label for="volumeSlider">🔊</label>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="1">
+        </div>
     </div>
     <button class="join-group-btn" onclick="window.open('https://chat.whatsapp.com/BYp8iwyJTfwHO9zcHxaAke', '_blank')">
         Join Y FM Night Style Fan WhatsApp Group
@@ -164,6 +190,7 @@
     <script>
         const audio = document.getElementById('audio');
         const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
 
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
@@ -173,6 +200,11 @@
                 audio.pause();
                 playPauseBtn.textContent = '▶️';
             }
+        });
+
+        // Handle volume change
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value;
         });
     </script>
 </body>
