@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Y FM Radio</title>
     <style>
+        @keyframes moveSideways {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scalePlayButton {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -28,6 +52,7 @@
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
+            animation: moveSideways 3s infinite ease-in-out; /* Adds motion */
         }
 
         h1 {
@@ -48,7 +73,7 @@
             width: 100%;
             max-width: 600px;
             border-radius: 10px;
-            background-color: #333; /* Dark background for audio player */
+            background-color: #333;
             padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
             display: flex;
@@ -66,20 +91,20 @@
             height: 80px;
             border: none;
             border-radius: 50%;
-            background-color: #ff0000; /* Red color for the button */
+            background-color: #ff0000;
             color: #ffffff;
             font-size: 36px;
             cursor: pointer;
             outline: none;
-            transition: background-color 0.3s, transform 0.3s, color 0.3s;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: scalePlayButton 2s infinite ease-in-out; /* Adds continuous scaling animation */
         }
 
         .play-pause-btn:hover {
-            background-color: #cc0000; /* Darker red on hover */
+            background-color: #cc0000;
             transform: scale(1.1);
         }
 
@@ -91,14 +116,14 @@
         }
 
         a {
-            color: #ff0000; /* Red color for links */
+            color: #ff0000;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         a:hover {
-            color: #cc0000; /* Darker red on hover */
+            color: #cc0000;
         }
 
         .join-group-btn {
@@ -106,7 +131,7 @@
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #ff0000; /* Red color for the button */
+            background-color: #ff0000;
             color: white;
             font-size: 1em;
             cursor: pointer;
@@ -115,14 +140,14 @@
         }
 
         .join-group-btn:hover {
-            background-color: #cc0000; /* Darker red on hover */
+            background-color: #cc0000;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Welcome to Y FM</h1>
+        <h1>Y FM</h1>
         <p>Streaming live on 92.7 FM</p>
     </header>
     <div class="audio-container">
@@ -147,10 +172,10 @@
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
-                playPauseBtn.textContent = '⏸️'; // Change to pause icon
+                playPauseBtn.textContent = '⏸️';
             } else {
                 audio.pause();
-                playPauseBtn.textContent = '▶️'; // Change to play icon
+                playPauseBtn.textContent = '▶️';
             }
         });
     </script>
